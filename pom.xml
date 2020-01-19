@@ -40,9 +40,6 @@
 		      <execution>
 			<id>prepare-integration-tests</id>
 			<phase>pre-integration-test</phase>
-			<goals>
-			  <goal>prepare-agent</goal>
-			</goals>
 			<configuration>
 			  <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
 			</configuration>
