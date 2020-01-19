@@ -38,14 +38,11 @@
 		    <executions>
 		      <!-- prepare agent for measuring integration tests -->
 		      <execution>
-			<id>prepare-integration-tests</id>
+			<id>default-prepare-agent</id>
 			<phase>pre-integration-test</phase>
-			      <execution>
-				<id>default-prepare-agent</id>
-				<goals>
-				   <goal>prepare-agent</goal>
-				</goals>
-			      </execution>
+			<goals>
+			   <goal>prepare-agent</goal>
+			</goals>
 			<configuration>
 			  <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
 			</configuration>
