@@ -20,7 +20,36 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
+	<!-- reporting API -->
+	<dependency>
+		<groupId>org.apache.maven.reporting</groupId>
+		<artifactId>maven-reporting-impl</artifactId>
+		<version>3.0.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.maven.reporting</groupId>
+		<artifactId>maven-reporting-api</artifactId>
+		<version>3.0</version>
+	</dependency>
+
+	<!-- plugin API and plugin-tools -->
+	<dependency>
+		<groupId>org.apache.maven</groupId>
+		<artifactId>maven-plugin-api</artifactId>
+		<version>3.5.2</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.maven.plugin-tools</groupId>
+		<artifactId>maven-plugin-annotations</artifactId>
+		<version>3.5</version>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.maven.shared</groupId>
+		<artifactId>maven-shared-utils</artifactId>
+		<version>3.2.0</version>
+	</dependency>
+   </dependencies>
 	<reporting>
 		<plugins>
 			<!-- Normally, we take off the dependency report, saves time. -->
@@ -56,7 +85,35 @@
 			</execution>
 		    </executions>
 		</plugin>
-   
+   		 <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-site-plugin</artifactId>
+			<version>3.2</version><!-- last maven-site-plugin version supporting this reportPlugins configuration -->
+			<configuration>
+
+			  <reportPlugins><!-- not supported any more, causes WARNING in Maven 3.5.0: move to <project><reporting><plugins> instead -->
+			    <plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>maven-project-info-reports-plugin</artifactId>
+			      <version>2.4</version>
+			      <configuration>
+				<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+				<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+			      </configuration>
+			      <!-- simpler configuration without reportSets available for usual cases -->
+			      <reports>
+				<report>dependencies</report>
+				<report>scm</report>
+			      </reports>
+			    </plugin>
+			    <plugin>
+			      <groupId>org.apache.maven.plugins</groupId>
+			      <artifactId>maven-javadoc-plugin</artifactId>
+			      <version>2.8</version>
+			    </plugin>
+			  </reportPlugins>
+			</configuration>
+		</plugin>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-project-info-reports-plugin</artifactId>
