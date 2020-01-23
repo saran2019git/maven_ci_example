@@ -88,7 +88,7 @@
    		 <plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-site-plugin</artifactId>
-			<version>3.2</version><!-- last maven-site-plugin version supporting this reportPlugins configuration -->
+			<version>3.3</version><!-- last maven-site-plugin version supporting this reportPlugins configuration -->
 			<configuration>
 
 			  <reportPlugins><!-- not supported any more, causes WARNING in Maven 3.5.0: move to <project><reporting><plugins> instead -->
